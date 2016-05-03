@@ -2,7 +2,7 @@
 * @Author: SplendourHui
 * @Date:   2016-05-03 14:42
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-03 20:07
+* @Last modified time: 2016-05-03 20:20
 */
 
 
@@ -20,14 +20,17 @@ function asyncAdd(x, y) {
   });
 }
 
-add = functional.reduce(add);
-asyncAdd = functional.reduce(asyncAdd, true);
-console.log(add(1, 2, 3, 4));
-asyncAdd(1, 2, 3, 4, 5).then(result => console.log(result));
+// add = functional.reduce(add);
+// asyncAdd = functional.reduce(asyncAdd, true);
+// console.log(add(1, 2, 3, 4));
+// asyncAdd(1, 2, 3, 4, 5).then(result => console.log(result));
 
-const debounce = functional.debounce(() => {
-  console.log('debounce test');
-}, 1000);
+// const debounce = functional.debounce(() => {
+//   console.log('debounce test');
+// }, 1000);
+//
+// debounce();
+// debounce();
 
-debounce();
-debounce();
+add = functional.multicast(add);
+console.log(add([1, 2, 3], 4));

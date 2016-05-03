@@ -2,7 +2,7 @@
 * @Author: SplendourHui
 * @Date:   2016-05-03 14:41
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-03 20:08
+* @Last modified time: 2016-05-03 20:18
 */
 
 
@@ -54,5 +54,18 @@ exports.debounce = (fn, delay) => {
     timer = setTimeout(() => {
       fn.apply(this, args);
     }, delay);
+  }
+}
+
+/**
+* 使函数支持批量操作
+*/
+exports.multicast = (fn) => {
+  return function(list, ...args) {
+    if (Array.isArray(list)) {
+      return list.map(item => fn.apply(this, [item, ...args]));
+    } else {
+      return fn.apply(this, [list, ...args]);
+    }
   }
 }
