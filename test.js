@@ -2,7 +2,7 @@
 * @Author: SplendourHui
 * @Date:   2016-05-03 14:42
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-03 20:20
+* @Last modified time: 2016-05-04 08:27
 */
 
 
@@ -32,5 +32,14 @@ function asyncAdd(x, y) {
 // debounce();
 // debounce();
 
-add = functional.multicast(add);
-console.log(add([1, 2, 3], 4));
+// add = functional.multicast(add);
+// console.log(add([1, 2, 3], 4));
+
+// add = functional.wrap(add, (...args) => {
+//   console.log(args);
+//   return args;
+// }, (args) => {
+//   let ret = args[0];
+//   console.log(ret);
+// })
+// add(1, 2);

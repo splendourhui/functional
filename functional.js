@@ -2,7 +2,7 @@
 * @Author: SplendourHui
 * @Date:   2016-05-03 14:41
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-03 20:18
+* @Last modified time: 2016-05-04 08:26
 */
 
 
@@ -67,5 +67,23 @@ exports.multicast = (fn) => {
     } else {
       return fn.apply(this, [list, ...args]);
     }
+  }
+}
+
+/**
+* 对原始函数的参数和返回值进行包装
+* @before 对参数进行包装的函数
+* @after 对返回值进行包装的函数
+*/
+exports.wrap = (fn, before, after) => {
+  return function(...args) {
+    if (before) {
+      args = before.apply(this, args);
+    }
+    let ret = fn.apply(this, args);
+    if (after) {
+      ret = after.call(this, [ret, ...args]);
+    }
+    return ret;
   }
 }
